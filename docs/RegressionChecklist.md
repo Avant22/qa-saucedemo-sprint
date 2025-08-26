@@ -1,9 +1,9 @@
-Login success
-Login error banner on invalid user
-Locked user blocked
-Inventory list loads
-Cart badge updates on add/remove
-Cart page shows items and totals
-Checkout form validates
-Checkout success confirmation
-Logout clears session
+# Regression Checklist
+[] Site reachable
+[] Login happy path
+[] Add to cart updates badge
+[] Remove from cart clears badge
+[] Cart persists after refresh
+[] Checkout validation
+[] Successful order confirmation
+[] Logout returns to login

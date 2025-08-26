@@ -1,7 +1,6 @@
-Build: Public demo site
-Automation: Passing
-Manual regression: Green
-Open defects: None at High or Critical
-Risks accepted: None
-QA Recommendation: Approve release
-Signatures: QA, Dev
+# Release Sign-off
+Scope: Login + Checkout
+Summary: 3 automated tests passed; manual negatives verified; 0 open P0/P1.
+Risks: Minor UI quirk on very small width.
+Decision: Go for release
+Approver: QA Analyst (you)

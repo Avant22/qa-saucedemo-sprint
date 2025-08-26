@@ -1,10 +1,24 @@
-Title: Sprint QA Strategy – SauceDemo Checkout Flow
-Objective: Validate core ecommerce flow: login, add-to-cart, checkout, and order confirmation. Demonstrate test design, execution, defect tracking, and release readiness.
-Scope: Functional UI, negative testing, cross-browser sanity (Chromium by default), basic accessibility smoke via focus and tab order checks.
-Out of Scope: Load testing, security, localization, mobile native coverage.
-Risks: Demo credentials rate limits, UI timing flakiness, environment instability.
-Test Levels: Unit (dev-owned), UI functional (QA), smoke accessibility, regression of critical paths.
-Environments: Public demo site on latest Chrome.
-Entry Criteria: Target reachable, credentials available, baseline smoke green.
-Exit Criteria: All Critical/High defects closed or deferred with sign-off, regression checklist green, automation green.
-Reporting: Daily status note in README or project board, defects logged in DefectReports.md, release signoff in ReleaseSignoff.md.
+# Sprint QA Strategy — SauceDemo Checkout/Login
+## Objective
+Validate the core e-commerce flows on https://www.saucedemo.com: login, add to cart, and checkout. Ensure functionality, basic UX sanity, and resilience to common negatives.
+
+## Scope
+Functional UI tests, negative tests, smoke regression, exploratory charters, defect taxonomy and triage notes.
+
+## Risks
+Auth state issues, flaky network, dynamic selectors, environment outages, browser differences.
+
+## Test Levels
+Unit (dev-owned), UI functional (QA), smoke regression (QA), basic accessibility smoke.
+
+## Environments
+Local Playwright with Chromium headless; target site at https://www.saucedemo.com.
+
+## Entry Criteria
+Stories in scope are defined, tests runnable locally, credentials available, no open P0s blocking smoke.
+
+## Exit Criteria
+All P0/P1 fixed or consciously deferred with sign-off; regression checklist green; report archived.
+
+## Reporting
+Daily notes in repo issues; automated HTML test report per run; release sign-off doc.

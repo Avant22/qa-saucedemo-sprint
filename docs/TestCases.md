@@ -1,11 +1,13 @@
+# Test Cases
 | ID | Title | Pre-req | Steps | Expected |
-| TC-01 | Login valid user | Site reachable | Open site, enter valid creds, click login | Inventory page visible, no error |
-| TC-02 | Login invalid user | Site reachable | Open site, enter bad creds, click login | Error message displayed |
-| TC-03 | Locked user login | Site reachable | Enter locked_out_user, click login | Blocked message displayed |
-| TC-04 | Add to cart | Logged in | Add first item | Cart badge increments |
-| TC-05 | Remove from cart | Item in cart | Remove item | Cart badge decrements or disappears |
-| TC-06 | View cart | Items added | Open cart | Items and price totals correct |
-| TC-07 | Checkout happy path | Items in cart | Checkout, fill form, continue, finish | Confirmation displayed |
-| TC-08 | Checkout missing fields | On checkout info | Leave required field blank | Inline validation message |
-| TC-09 | Refresh during flow | Logged in | Refresh after adding to cart | State consistent or gracefully reset |
-| TC-10 | Logout | Logged in | Open menu, logout | Back to login page |
+|---|---|---|---|---|
+| TC-01 | Login happy path | App reachable | Open site; enter standard_user/secret_sauce; click Login | Lands on inventory page |
+| TC-02 | Login invalid shows error | App reachable | Enter user X / wrong pass; Login | Error banner displayed |
+| TC-03 | Add item to cart | Logged in | Add Backpack to cart | Cart badge shows 1 |
+| TC-04 | Remove item from cart | Item in cart | Open cart; remove item | Cart empty |
+| TC-05 | Cart persists on refresh | Item in cart | Refresh inventory | Cart badge still 1 |
+| TC-06 | Checkout requires info | Item in cart | Start checkout; continue empty | Validation errors shown |
+| TC-07 | Checkout completes | Item in cart | Fill info; finish | Thank You message shown |
+| TC-08 | Logout clears session | Logged in | Open menu; Logout | Back to login; inventory blocked |
+| TC-09 | Locked out user blocked | App reachable | Use locked_out_user | Error shown |
+| TC-10 | Price totals consistent | Item in cart | Proceed to overview | Item total + tax equals displayed total |

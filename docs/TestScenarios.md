@@ -1,10 +1,9 @@
-S1: Valid login and load inventory
-S2: Invalid login shows helpful error
-S3: Locked user cannot login
-S4: Add an item to cart and see badge update
-S5: Remove item and verify cart updates
-S6: Open cart and verify line items and totals
-S7: Checkout happy path with valid form fields
-S8: Checkout form validation on missing fields
-S9: Refresh during steps does not corrupt state
-S10: Logout clears session
+# High-level Test Scenarios
+1. Successful login with standard user.
+2. Error message on invalid credentials.
+3. Add single item to cart, cart count updates.
+4. Add and remove items from inventory and cart.
+5. Cart persists after page refresh.
+6. Checkout: information form validation.
+7. Checkout: complete order and see confirmation.
+8. Logout clears session and returns to login.
