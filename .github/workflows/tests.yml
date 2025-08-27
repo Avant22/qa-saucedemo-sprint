@@ -27,15 +27,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python -m playwright install ${{ matrix.browser }}
-          npx playwright install-deps
+          python -m playwright install --with-deps
 
-      - name: Run tests with pytest
+      - name: Run Playwright tests
         run: |
           mkdir -p artifacts
-          xvfb-run -a pytest -q --html=artifacts/report-${{ matrix.browser }}.html --self-contained-html --maxfail=1 --disable-warnings
+          xvfb-run pytest -q \
+            --html=artifacts/report-${{ matrix.browser }}.html \
+            --self-contained-html \
+            --maxfail=1 --disable-warnings
 
-      - name: Upload HTML Report
+      - name: Upload HTML Reports
         uses: actions/upload-artifact@v4
         with:
           name: report-${{ matrix.browser }}
