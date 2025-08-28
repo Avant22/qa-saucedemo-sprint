@@ -28,12 +28,15 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-          mkdir -p artifacts
-          pytest -q --html=artifacts/report-${{ matrix.browser }}.html --self-contained-html --browser ${{ matrix.browser }}
+          mkdir -p artifacts/${{ matrix.browser }}
+          pytest -q \
+            --html=artifacts/${{ matrix.browser }}/report.html \
+            --self-contained-html \
+            --browser ${{ matrix.browser }}
 
       - name: Upload Test Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: reports-${{ matrix.browser }}
-          path: artifacts/*
+          path: artifacts/${{ matrix.browser }}/*
