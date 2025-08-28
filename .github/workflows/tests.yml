@@ -1,44 +1,13 @@
-name: ui-tests
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  e2e:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        browser: [chromium, firefox, webkit]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python -m playwright install --with-deps
-
       - name: Run Playwright tests
+        env:
+          PYTHONPATH: .
         run: |
           mkdir -p artifacts
-          xvfb-run pytest -q \
-            --html=artifacts/report-${{ matrix.browser }}.html \
-            --self-contained-html \
-            --maxfail=1 --disable-warnings
+          pytest -q --html=artifacts/report-${{ matrix.browser }}.html --self-contained-html --browser ${{ matrix.browser }}
 
-      - name: Upload HTML Reports
+      - name: Upload Test Artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: report-${{ matrix.browser }}
-          path: artifacts/report-${{ matrix.browser }}.html
+          name: reports-${{ matrix.browser }}
+          path: artifacts/*
